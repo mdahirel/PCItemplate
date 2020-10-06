@@ -1,0 +1,29 @@
+---
+title: "the title of your preprint"
+output:  
+  pdf_document:
+    template: main.tex
+---
+
+
+# Introduction {-}
+
+some text
+
+# Methods {-}
+
+more text 
+
+## stats {-}
+
+more text
+
+# Results {-}
+
+text
+
+# Discussion {-}
+
+text
+
+# Acknowledgements {-}

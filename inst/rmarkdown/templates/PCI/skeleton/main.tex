@@ -1,0 +1,116 @@
+%%%%%%%%%%TO FORMAT A PREPRINT FOR A PCI%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\documentclass[a4paper]{article}
+%%%%%%%%%   CHOOSE A PCI   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\input{preambule_ecology.tex}
+\input{preambule_evolbiol.tex}
+%\input{preambule_paleo.tex}
+%\input{preambule_animsci.tex}
+%\input{preambule_genomics.tex}
+%\input{preambule_archaeo.tex}
+%\input{preambule_zool.tex}
+%\input{preambule_mcb.tex}
+%\input{preambule_fws.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%   CHOOSE A BADGE   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Comment lines 115 and/or 117 in the corresponding preambule_xxx.tex if you don't use data and/or code in your preprint
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%   SET THE TITLE   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\preprinttitle}{$title$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%  SET THE LIST OF AUTHORS WITH CORRESPONDING AFFILIATIONS  use \& before last author %%%%%%%%%%%%%%%%%%%%
+\newcommand{\listauthors}{\raggedright
+FirstnameOne FamilynameOne\textsuperscript{1}, \space
+FirstnameTwo FamilynameTwo\textsuperscript{1}, \&
+FirstnameThree FamilynameThree\textsuperscript{2}
+%\fourthauthor \textsuperscript{i}
+%etc...
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  SET THE LIST OF AFFILIATIONS  %%%%%%%%%%%%%%%%%%%%
+\newcommand{\listinstitutions}{
+\textsuperscript{1} DeptOne, InstitutionOne -- TownOne, CountryOne
+\\
+\textsuperscript{2} DeptTwo, InstitutionTwo -- TownTwo, CoutryTwo
+%\\
+%\textsuperscript{3} \thirdinstitution
+%etc
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%  SET THE DATE OF UPLOAD on the preprint server %%%%%%%%%%%%%%
+\newcommand{\datepub}{ddth Month yyyy}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%  SET THE RECOMMENDER(s) NAME(s) %%%%%%%%%%%%%%
+\newcommand{\recommender}{FirstName FamilyName}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%  SET THE REVIEWERS' NAMES IF KNOWN and/or X anonymous reviewers %%%%%%%%%%%%%%
+\newcommand{\reviewers}{FirstName FamilyName and two anonymous reviewer}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  SET THE 'CORRESPONDENCE TO' %%%%%%%%%%%%%%%%%
+\newcommand{\email}{mail.mail@mail.xx}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  SET THE ABSTRACT %%%%%%%%%%%%%%%%%
+\newcommand{\preprintabstract}{This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract.}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  SET THE KEYWORDS %%%%%%%%%%%%%%%%%
+\newcommand{\preprintkeywords}{KeywordOne; KeywordTwo; KeywordThree; KeywordFour; KeywordFive}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+\beginingpreprint
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Text of the preprint %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% use \emph{} for italics and \parencite{} to cite a reference and \ref{XX} to cite the \label{XX}
+% use \\ and a blank line to mark the end of paragraph and starting of a new one
+
+$body$
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%  EXAMPLE OF A FIGURE   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}
+  \captionsetup{justification=centering}
+  \caption{A nice picture of bidule.}
+  \centering
+  \includegraphics[scale=0.5]{fig.png}
+  \label{Fig1}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%% THE TEXT ENDS ABOVE THIS LINE %%%%%%%%%%%%%%%%%%%%%%%
+
+\printbibliography[notcategory=ignore]
+
+\section*{Appendix}
+This is your appendix 1 or the link to appendix 1 \\
+This is your appendix 2 or the link to appendix 2
+
+\end{document}
