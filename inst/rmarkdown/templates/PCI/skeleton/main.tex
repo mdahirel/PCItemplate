@@ -4,22 +4,23 @@
 
 \documentclass[a4paper]{article}
 %%%%%%%%%   CHOOSE A PCI   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\input{preambule_ecology.tex}
-\input{preambule_evolbiol.tex}
-%\input{preambule_paleo.tex}
-%\input{preambule_animsci.tex}
-%\input{preambule_genomics.tex}
-%\input{preambule_archaeo.tex}
-%\input{preambule_zool.tex}
-%\input{preambule_mcb.tex}
-%\input{preambule_fws.tex}
-
-
+\input{preambule_$which_PCI$.tex}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%this block needs to be added for references to play well since pandoc 2.8 update
+%%%%%% see eg https://github.com/rstudio/rmarkdown/issues/1649
+%%%%%% or https://stackoverflow.com/questions/59193797/pandocs-environment-cslreferences-undefined-when-knitting-rmarkdown-to-pdf-in-r
+$if(csl-refs)$
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newenvironment{cslreferences}%
+  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+  {\par}
+$endif$
 
 %%%%%%%%%   CHOOSE A BADGE   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Comment lines 115 and/or 117 in the corresponding preambule_xxx.tex if you don't use data and/or code in your preprint
+%Comment lines 115 and/or 117 in the corresponding preambule_xxx.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -30,56 +31,65 @@
 
 
 %%%%%%%%%  SET THE LIST OF AUTHORS WITH CORRESPONDING AFFILIATIONS  use \& before last author %%%%%%%%%%%%%%%%%%%%
-\newcommand{\listauthors}{\raggedright
-FirstnameOne FamilynameOne\textsuperscript{1}, \space
-FirstnameTwo FamilynameTwo\textsuperscript{1}, \&
-FirstnameThree FamilynameThree\textsuperscript{2}
-%\fourthauthor \textsuperscript{i}
-%etc...
+
+%%%%TO DO: set it so \& added before last author!!!
+
+$if(author)$
+\newcommand{\listauthors}{
+$for(author)$ $author.name$\textsuperscript{$author.affiliation$} $sep$, $endfor$
 }
+$endif$
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%  SET THE LIST OF AFFILIATIONS  %%%%%%%%%%%%%%%%%%%%
+$if(address)$
 \newcommand{\listinstitutions}{
-\textsuperscript{1} DeptOne, InstitutionOne -- TownOne, CountryOne
-\\
-\textsuperscript{2} DeptTwo, InstitutionTwo -- TownTwo, CoutryTwo
-%\\
-%\textsuperscript{3} \thirdinstitution
-%etc
+$for(address)$ \textsuperscript{$address.code$}$address.address$ $sep$\\ $endfor$
 }
+$endif$
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%  SET THE DATE OF UPLOAD on the preprint server %%%%%%%%%%%%%%
-\newcommand{\datepub}{ddth Month yyyy}
+\newcommand{\datepub}{$date$}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%  SET THE RECOMMENDER(s) NAME(s) %%%%%%%%%%%%%%
-\newcommand{\recommender}{FirstName FamilyName}
+$if(recommender)$
+\newcommand{\recommender}{
+$recommender$
+}
+$endif$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%  SET THE REVIEWERS' NAMES IF KNOWN and/or X anonymous reviewers %%%%%%%%%%%%%%
-\newcommand{\reviewers}{FirstName FamilyName and two anonymous reviewer}
+\newcommand{\reviewers}{$reviewers$}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  SET THE 'CORRESPONDENCE TO' %%%%%%%%%%%%%%%%%
-\newcommand{\email}{mail.mail@mail.xx}
+\newcommand{\email}{$email$}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  SET THE ABSTRACT %%%%%%%%%%%%%%%%%
-\newcommand{\preprintabstract}{This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract.}
+\newcommand{\preprintabstract}{$abstract$}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  SET THE KEYWORDS %%%%%%%%%%%%%%%%%
-\newcommand{\preprintkeywords}{KeywordOne; KeywordTwo; KeywordThree; KeywordFour; KeywordFive}
+$if(keywords)$
+\newcommand{\preprintkeywords}{
+$for(keywords)$ $keywords$ $sep$, $endfor$
+}
+$endif$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -92,18 +102,6 @@ FirstnameThree FamilynameThree\textsuperscript{2}
 % use \\ and a blank line to mark the end of paragraph and starting of a new one
 
 $body$
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%  EXAMPLE OF A FIGURE   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}
-  \captionsetup{justification=centering}
-  \caption{A nice picture of bidule.}
-  \centering
-  \includegraphics[scale=0.5]{fig.png}
-  \label{Fig1}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 %%%%%%%%%%%%% THE TEXT ENDS ABOVE THIS LINE %%%%%%%%%%%%%%%%%%%%%%%
 
