@@ -4,10 +4,27 @@
 
 \documentclass[a4paper]{article}
 %%%%%%%%%   CHOOSE A PCI   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{xstring}
+$if(author)$
+\newcommand{\citeauthors}{%
+$for(author)$$author.lastname$, $author.firstname$ $sep$and $endfor$%
+$if(lastauthor)$
+$for(lastauthor)$
+and $lastauthor.lastname$, $lastauthor.firstname$$sep$$endfor$%
+$endif$}
+$endif$
 
 \newcommand{\whichPCI}{$which_PCI$}
 \newcommand{\opendata}{$open_data$}
 \newcommand{\opencode}{$open_code$}
+\newcommand{\pubyear}{$pubyear$}
+\newcommand{\preprintDOI}{$preprintDOI$}
+\newcommand{\preprintserver}{$preprintserver$}
+\newcommand{\preprintnumber}{$preprintnumber$}
+\newcommand{\preprintversion}{$preprintversion$}
+
+\newcommand{\myrefs}{$bibliography$}
+
 \input{preamble.tex}
 %\input{preambule_$which_PCI$.tex}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -34,14 +51,17 @@ $endif$
 \newcommand{\preprinttitle}{$title$}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
+\newcommand{\captionside}{$caption-side$}
 %%%%%%%%%  SET THE LIST OF AUTHORS WITH CORRESPONDING AFFILIATIONS  use \& before last author %%%%%%%%%%%%%%%%%%%%
 
 %%%%TO DO: set it so \& added before last author!!!
 
 $if(author)$
 \newcommand{\listauthors}{
-$for(author)$ $author.name$\textsuperscript{$author.affiliation$} $sep$, $endfor$
+$for(author)$ $author.firstname$ $author.lastname$\textsuperscript{$author.affiliation$}$sep$, $endfor$
+$if(lastauthor)$
+$for(lastauthor)$and $lastauthor.firstname$ $lastauthor.lastname$\textsuperscript{$lastauthor.affiliation$} $sep$ $endfor$
+$endif$
 }
 $endif$
 
@@ -55,6 +75,14 @@ $if(address)$
 \newcommand{\listinstitutions}{
 $for(address)$ \textsuperscript{$address.code$}$address.address$ $sep$\\ $endfor$
 }
+$endif$
+
+$if(authorship-notes)$
+\newcommand{\authorshipnotes}{
+
+$for(authorship-notes)$ \textsuperscript{$authorship-notes.code$}$authorship-notes.note$ $sep$\\ $endfor$
+}
+$else$\newcommand{\authorshipnotes}{}
 $endif$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -103,17 +131,7 @@ $endif$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% Text of the preprint %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% use \emph{} for italics and \parencite{} to cite a reference and \ref{XX} to cite the \label{XX}
-% use \\ and a blank line to mark the end of paragraph and starting of a new one
-
 $body$
-
 %%%%%%%%%%%%% THE TEXT ENDS ABOVE THIS LINE %%%%%%%%%%%%%%%%%%%%%%%
-
-\printbibliography[notcategory=ignore]
-
-\section*{Appendix}
-This is your appendix 1 or the link to appendix 1 \\
-This is your appendix 2 or the link to appendix 2
 
 \end{document}

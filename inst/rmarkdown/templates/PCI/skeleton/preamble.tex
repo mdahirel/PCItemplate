@@ -30,6 +30,11 @@ giveninits=true,
 terseinits=true,
 url=false
 ]{biblatex}
+
+
+
+
+
 \DeclareNameAlias{default}{family-given}
 \renewcommand*{\revsdnamepunct}{} % no comma between family and given names
 \renewbibmacro{in:}{%
@@ -39,9 +44,53 @@ url=false
 \DeclareFieldFormat[article, inbook, incollection, inproceedings, misc, thesis, unpublished]{title}{#1} % title without quotes
 \usepackage{csquotes}
 \RequirePackage[english]{babel} % must be called after biblatex
-\addbibresource{sample.bib}
+%\addbibresource{sample.bib}
+
+%$for(bibliography)$
+%\addbibresource{$bibliography.file$}
+%$endfor$
+\addbibresource{\myrefs}
+
+
+\def\filecontentsspecials#1#2#3{
+  \global\let\ltxspecials\dospecials
+  \gdef\dospecials{\ltxspecials
+    \catcode`#1=0
+    \catcode`#2=1
+    \catcode`#3=2
+    \global\let\dospecials\ltxspecials
+  }
+}
+
+\newcommand{\writeauthor}{author={\citeauthors},}
+\newcommand{\writeDOI}{doi={https://doi.org/\preprintDOI},}
+
+\filecontentsspecials|[]
+\begin{filecontents*}[overwrite]{recommendedpreprint.bib}
+@article{recommendedpreprint,
+  title={\preprinttitle},
+  |writeauthor%
+  %FamilynameOne, FirstnameOne and FamilynameTwo, FirstnameTwo and FamilynameThree, FirstnameThree
+  journal={\preprintserver},
+  volume={\preprintnumber, ver. \preprintversion \space peer-reviewed and recommended by \emph{\PCI}},
+  year={\pubyear},
+  |writeDOI% doi = {\preprintDOI},
+  %https://doi.org/xxxxxxxxxxx
+}
+\end{filecontents*}
+
+\addbibresource{recommendedpreprint.bib}
+
+% the authors and doi fields need to be expanded and written explicitly to the bib fiel to work well
+% when added back to the references
+% hence the trick with | and the code above \begin{filecontents}
+% borrowed to https://tex.stackexchange.com/questions/534035/macros-commands-inside-a-filecontents-environment-does-not-expand
+% the other fields don't need to (and trying to expand with the same code can give errors anyway)
+
+
 \DeclareBibliographyCategory{ignore}
 \addtocategory{ignore}{recommendation} % adding recommendation to 'ignore' category so that it does not appear in the References
+\newcommand{\mybibexclude}[1]{\addtocategory{ignore}{#1}}
 % Clickable references. Use \url{www.example.com} or \href{www.example.com}{description} to add a clicky url
 \usepackage{nameref}
 \usepackage[pdfborder={0 0 0}]{hyperref}  % sets link border to white
@@ -51,6 +100,8 @@ url=false
 
 % Include figures
 \usepackage{graphbox}  % loads graphicx ppackage with extended options for vertical alignment of figures
+\usepackage{floatrow}
+\floatsetup[figure]{capposition=\captionside}
 % Line numbers
 %\usepackage[right]{lineno}
 % Improve typesetting in LaTex
@@ -86,7 +137,7 @@ url=false
 \chead{}
 \rhead{}
 
-\newcommand{\DOIlink}{\href{https://dx.doi.org/\DOI}{\DOI}}
+%\newcommand{\DOIlink}{\href{https://dx.doi.org/\DOI}{\DOI}}
 
 \newcommand{\DOIrecommendationlink}{\href{https://dx.doi.org/\DOIrecommendation}{\DOIrecommendation}}
 
@@ -99,11 +150,24 @@ url=false
 %\newcommand{\PCI}{Peer Community In Evolutionary Biology}
 
 \ifnum\pdfstrcmp{\whichPCI}{ecology}=0
-\newcommand{\PCI}{Peer Community In Ecology}
-\else
-\newcommand{\PCI}{Something Else I Guess}
-\fi
-
+  \newcommand{\PCI}{Peer Community In Ecology} \else %
+\ifnum\pdfstrcmp{\whichPCI}{evolbiol}=0
+  \newcommand{\PCI}{Peer Community In Evolutionary Biology} \else %
+\ifnum\pdfstrcmp{\whichPCI}{paleo}=0
+  \newcommand{\PCI}{Peer Community In Palaeontology} \else %
+\ifnum\pdfstrcmp{\whichPCI}{animsci}=0
+  \newcommand{\PCI}{Peer Community In Animal Science} \else %
+\ifnum\pdfstrcmp{\whichPCI}{genomics}=0
+  \newcommand{\PCI}{Peer Community In Genomics} \else %
+\ifnum\pdfstrcmp{\whichPCI}{archaeo}=0
+  \newcommand{\PCI}{Peer Community In Archaeology} \else %
+\ifnum\pdfstrcmp{\whichPCI}{zool}=0
+  \newcommand{\PCI}{Peer Community In Zoology} \else %
+\ifnum\pdfstrcmp{\whichPCI}{mcb}=0
+  \newcommand{\PCI}{Peer Community In Mathematical \& Computational Biology} \else %
+\ifnum\pdfstrcmp{\whichPCI}{fws}=0
+  \newcommand{\PCI}{Peer Community In Forest \& Wood Science}
+\fi \fi \fi \fi \fi \fi \fi \fi \fi
 
 
 \newcommand{\beginingpreprint}{
@@ -136,7 +200,13 @@ url=false
 \raggedright
 %\vspace*{3.25cm}
 \scriptsize\textbf{Cite as:}\space
-\fullcite{preprint}\\
+
+%%%%rather than asking the authors to add the reference of the preprint to their bibliography to enable the citeas
+%%%%we make use of the YAML fields of the Rmd file
+\fullcite{recommendedpreprint}\mybibexclude{recommendedpreprint}\\
+%\printbibliography[type= article, env = recommendedpreprint.bib]
+%@recommendedpreprint (\pubyear). \preprinttitle. \emph{\preprintserver} \space \preprintnumber, ver. \preprintversion \space peer-reviewed and recommended by \emph{\PCI}. DOI: \DOI \\
+
 \vspace*{0.5cm}
 \textbf{Posted:} \datepub\\
 \vspace*{0.5cm}
@@ -187,6 +257,9 @@ url=false
 \bigskip
 {\raggedright
 \listinstitutions}
+{\raggedright
+\authorshipnotes}
+
 % Recommended preprint box
 \begin{flushleft}
 %\noindent

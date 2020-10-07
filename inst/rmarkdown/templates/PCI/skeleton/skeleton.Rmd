@@ -9,20 +9,29 @@ which_PCI: ecology
 # genomics
 # archaeo: Archaeology
 # zool: Zoology
-# mcb: Mathematical and Computational Biology
-# fws: Forest and Wood Science
-open_data: true #set to false if no open data
-open_code: true #set to false if no open code
+# mcb: Mathematical & Computational Biology
+# fws: Forest & Wood Science
+open_data: true #set to false if no open data in article
+open_code: true #set to false if no open code in article
 author:
-  - name: Alice Anonymous
-    affiliation: a
-  - name: Bob Security
-    affiliation: a,b
+  - firstname: Alice
+    lastname: Anonymous
+    affiliation: 1
+  - firstname: Bob B.
+    lastname: Security
+    affiliation: 1,2,a
+lastauthor: 
+  - firstname: Carol #add last author here if more than one author for proper styling
+    lastname: Senior #can be kept empty/deleted otherwise
+    affiliation: 1,a
 address:
-  - code: a
+  - code: 1
     address: Some Institute of Technology, Department, Street, City, State, Zip
-  - code: b
+  - code: 2
     address: Another University Department, Street, City, State, Zip
+authorship-notes:
+  - code: a  #delete or keep empty if not needed
+    note: These authors contributed equally to this work. #delete or keep empty if not needed
 email: mail.mail\@mail.com
 abstract: |
   Write your abstract here in a single paragraph, no line breaks. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract.
@@ -37,19 +46,24 @@ recommender: Their name here
 
 reviewers: Their name here if known, and X anonymous reviewers
 
-date: "`r format(Sys.time(), '%Y-%m-%d')`"
+date: date in ddth mm YYYY format
+pubyear: "`r format(Sys.time(), '%Y')`"
+preprintserver: bioRxiv
+preprintversion: X
+preprintnumber: xxxx
+preprintDOI: xxxxxxxxxxx #important: format XXXXX here, do NOT add the https://doi.org/ here
 
 output:  
   pdf_document:
     fig_caption: true
     template: main.tex
-header-includes:
-   - \usepackage{floatrow}
-   - \floatsetup[figure]{capposition=top}
-   #does not work, find how to make captions on top of image or if it is important
-bibliography: sample.bib #replace with your own
+    citation_package: biblatex
+bibliography: sample.bib #replace with path (relative or absolute) to your own
+#e.g. C:/Users/.../myreferences.bib
+#inline R code that outputs an unquoted path can be used (see pubyear above for how to include r code in YAML header)
+biblio-style: authoryear
+caption-side: bottom #can be top or bottom
 ---
-<!--ask Thomas: how are equal contributions noted? same place as affiliation, or same place as corresponding ?-->
 
 # Introduction {-}
 
@@ -57,13 +71,13 @@ This is an example of text. This realization is especially important because it 
 
 In their study "When higher carrying capacities lead to faster propagation", @preprint combine mathematical analysis, Individual-Based simulations and experiments to show that various mechanisms can cause pushed fronts, whose speed increases with the carrying capacity K of the species. Rather than focus on one particular angle, the authors endeavor to demonstrate that this qualitative effect appears again and again in a variety of settings.
 
-It is perhaps surprising that this notable and general connection between K and invasion speed has managed to garner so little fame in ecology. A large fraction of the literature employs the venerable Fisher-KPP reaction-diffusion model, which combines local logistic growth with linear diffusion in space. This model has prompted both considerable mathematical developments [@crooks2004spatial] and many applications to modelling real invasions [@shigesada1997biological]. But it only allows pulled fronts, driven by the small populations at the edge of a species range, with a speed that depends only on their initial growth rate r.\\
+It is perhaps surprising that this notable and general connection between K and invasion speed has managed to garner so little fame in ecology. A large fraction of the literature employs the venerable Fisher-KPP reaction-diffusion model, which combines local logistic growth with linear diffusion in space. This model has prompted both considerable mathematical developments [@crooks2004spatial] and many applications to modelling real invasions [@shigesada1997biological]. But it only allows pulled fronts, driven by the small populations at the edge of a species range, with a speed that depends only on their initial growth rate r.
 
 # Methods {-}
 
 more text 
 
-## stats {-}
+## Statistical analyses {-}
 
 more text
 
@@ -71,7 +85,7 @@ more text
 
 text
 
-```{r fig1, echo=FALSE, fig.cap="\\label{fig:fig1}Caption"}
+```{r fig1, echo=FALSE, fig.cap="Caption", out.width="10cm"}
 x <- 1:10
 y <- 11:20
 plot(x, y)
@@ -113,14 +127,12 @@ This is your Acknowledgements
 
 The authors of this preprint declare that they have no financial conflict of interest with the content of this article. XXX and XXX are recommenders for PCI XXX
 
-# References {-}
 
-<div id="refs"></div>
-<!--the line above forces the references position here instead of at the end, in case you have appendices-->
-<!--delete everything below this if you do not have appendices to add-->
+<!--a little bit of LaTeX verbatim to place the references here, before the (potential) appendices:-->
+\printbibliography[notcategory=ignore]
 
+<!--delete or comment out everything after this if you do not use appendices-->
 # Appendix {-}
 
-This is your appendix 1 or the link to appendix 1
-
+This is your appendix 1 or the link to appendix 1  
 This is your appendix 2 or the link to appendix 2
