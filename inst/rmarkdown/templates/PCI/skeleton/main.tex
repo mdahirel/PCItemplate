@@ -4,7 +4,12 @@
 
 \documentclass[a4paper]{article}
 %%%%%%%%%   CHOOSE A PCI   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{preambule_$which_PCI$.tex}
+
+\newcommand{\whichPCI}{$which_PCI$}
+\newcommand{\opendata}{$open_data$}
+\newcommand{\opencode}{$open_code$}
+\input{preamble.tex}
+%\input{preambule_$which_PCI$.tex}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%this block needs to be added for references to play well since pandoc 2.8 update

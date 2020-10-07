@@ -1,6 +1,6 @@
 ---
 title: "the title of your preprint"
-which_PCI: evolbiol
+which_PCI: ecology
 # which_PCI MUST BE one of:
 # ecology
 # evolbiol: Evolutionary Biology
@@ -11,8 +11,8 @@ which_PCI: evolbiol
 # zool: Zoology
 # mcb: Mathematical and Computational Biology
 # fws: Forest and Wood Science
-open_data: true #set to false if no open data #does not currently work
-open_code: true #set to false if no open code #does not currently work
+open_data: true #set to false if no open data
+open_code: true #set to false if no open code
 author:
   - name: Alice Anonymous
     affiliation: a
@@ -49,6 +49,7 @@ header-includes:
    #does not work, find how to make captions on top of image or if it is important
 bibliography: sample.bib #replace with your own
 ---
+<!--ask Thomas: how are equal contributions noted? same place as affiliation, or same place as corresponding ?-->
 
 # Introduction {-}
 
