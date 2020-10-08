@@ -1,6 +1,6 @@
-# RMarkdown template for preprint recommended by one of the Peer Communities In
+# RMarkdown template for preprints recommended by one of the Peer Communities In
 
-written by Maxime Dahirel (GitHub: [@mdahirel](https://github.com/mdahirel)), from original LaTeX templates
+written by Maxime Dahirel (GitHub: [@mdahirel](https://github.com/mdahirel)), from the original LaTeX templates
 
 # To use this template
 
@@ -16,7 +16,7 @@ This template relies on the `bookdown` package. It is possible to output without
 
 If you need any help in how to write your RMarkdown document, the RMarkdown Cookbook by Yihui Xie, Christophe Dervieux, Emily Riederer (https://bookdown.org/yihui/rmarkdown-cookbook/) is a good start, but many resources are available online.
 
-NB: please ensure there is *no* reference with the key 'recommendedpreprint' in your bibliography files. This key will be used by the LaTeX templates to build and display the "cite as" paragraph on the first page of the pdf.
+NB: please ensure there is *no* reference with the key 'recommendedpreprint' in your bibliography files. This is the key used by the LaTeX templates to build and display the "cite as" paragraph on the first page of the pdf.
 
 **Important note regarding references lists:** In some cases, some unwanted annotation fields can appear in the reference lists. While we work on ironing these out, the best solution may be to delete manually the unwanted fields from the .bib file. For Zotero users, use Better BibTeX and export bibliographies as Better BibLaTeX to reduce these problems (preferentially with automatic title capitalization turned off, see Advanced> Export in Better BibTex preference panel).
 
