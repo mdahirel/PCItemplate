@@ -8,11 +8,13 @@ written by Maxime Dahirel (GitHub: [@mdahirel](https://github.com/mdahirel)), fr
 - modify the YAML with your informations (including your bibliography file path)
 - write your preprint in the body of the document
 - press `Knit` or use `render()`
-- *Voilà!*
+- *Voila!*
 
 This RMarkdown template is based on the LaTeX templates available here https://peercommunityin.org/templates/, with modifications to allow you to fill all metadata fields directly from the YAML header of the `Rmd` file. 
 
 This template relies on the `bookdown` package. It is possible to output without it, but some functions are lost. See the "DO NOT CHANGE these settings unless you know what you're doing" block of the YAML header.
+
+**Important:** we recommend Better BibTeX users to *not* export their bibliography as Better BibTex files, but rather as "classical" BibTeX files. Using Better BibTeX can use to unwanted changes in title capitalization, among others (corrections to this problem will be attempted in later updates).
 
 If you need any help in how to write your RMarkdown document, the RMarkdown Cookbook by Yihui Xie, Christophe Dervieux, Emily Riederer (https://bookdown.org/yihui/rmarkdown-cookbook/) is a good start, but many resources are available online.
 
