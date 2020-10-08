@@ -1,6 +1,6 @@
 ---
 title: "An RMarkdown template for a preprint recommended by one of the Peer Communities In"
-which_PCI: ecology
+which_PCI: evolbiol
 # which_PCI MUST BE one of:
 # ecology
 # evolbiol: Evolutionary Biology
@@ -58,7 +58,8 @@ bibliography: bibliography/sample.bib #replace with path (relative or absolute) 
 #inline R code that outputs an unquoted path can be used (see pubyear above for how to include r code in YAML header)
 caption-side: bottom #where are figure captions relative to figure? can be top or bottom
 ###############################################################
-#### DO NOT CHANGE these settings, results not guaranteed if altered
+#### DO NOT CHANGE these settings unless you know what you're doing
+#### results not guaranteed if altered
 biblio-style: authoryear
 output:  
   bookdown::pdf_document2:
