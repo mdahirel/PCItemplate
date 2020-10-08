@@ -55,6 +55,8 @@ preprintDOI: xxxxxxxxxxx #important: "naked" doi, do NOT include the https://doi
 recommendationDOI: yyyyyyy #important: "naked" doi, do NOT include the https://doi.org/ prefix here
 
 bibliography: bibliography/sample.bib #replace with path (relative or absolute) to your own
+#needs to be a .bib file, BibTeX/BibLaTeX and their Better BibTeX equivalents all work,
+#but see README for details
 #inline R code that outputs an unquoted path can be used (see pubyear above for how to include r code in YAML header)
 caption-side: bottom #where are figure captions relative to figure? can be top or bottom
 ###############################################################
