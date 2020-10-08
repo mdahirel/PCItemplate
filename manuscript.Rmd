@@ -126,7 +126,7 @@ Tables and figures can be cross-referenced using the `\@ref(a:b)` syntax, where 
 knitr::kable(head(mtcars[, 5:8]), caption= "This is also a table, but with vertical lines kept")
 ```
 
-One can also easily add figures, either directly generated with code in-file (like Fig.\@ref(fig:fig1), or imported (like Figs.\@ref(fig:fig2)-\@ref(fig:fig3)). There are several ways to import figures in RMarkdown; the preferred way in this template is to use `include_figures()` within a chunk. This makes in particular figure scaling much easier, and allows you to import pdf files as figures.
+One can also easily add figures, either directly generated with code in-file (like Fig.\@ref(fig:fig1)), or imported (like Figs.\@ref(fig:fig2)-\@ref(fig:fig3)). There are several ways to import figures in RMarkdown; the preferred way in this template is to use `include_figures()` within a chunk. This makes in particular figure scaling much easier, and allows you to import pdf files as figures.
 
 Figures will place themselves in order of their introduction in the code, but where there is room, so not necessarily where you placed them *relative to text*. Play with structure to obtain the effect you want.
 
