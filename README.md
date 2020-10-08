@@ -1,7 +1,6 @@
----
-title: "RMarkdown template for preprint recommended by one of the Peer Communities In"
-author: Maxime Dahirel (GitHub: @mdahirel), from original LaTeX templates
----
+# RMarkdown template for preprint recommended by one of the Peer Communities In
+
+written by Maxime Dahirel (GitHub: [@mdahirel](https://github.com/mdahirel)), from original LaTeX templates
 
 # To use this template
 
