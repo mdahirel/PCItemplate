@@ -14,7 +14,7 @@ This RMarkdown template is based on the LaTeX templates available here https://p
 
 This template relies on the `bookdown` package. It is possible to output without it, but some functions are lost. See the "DO NOT CHANGE these settings unless you know what you're doing" block of the YAML header.
 
-If you need any help in how to write your RMarkdown document, the RMarkdown Cookbook by Yihui Xie, Christophe Dervieux, Emily Riederer (https://bookdown.org/yihui/rmarkdown-cookbook/) by is a good start, but many resources are available online.
+If you need any help in how to write your RMarkdown document, the RMarkdown Cookbook by Yihui Xie, Christophe Dervieux, Emily Riederer (https://bookdown.org/yihui/rmarkdown-cookbook/) is a good start, but many resources are available online.
 
 NB: please ensure there is no reference with the key 'recommendedpreprint' in your bibliography files. This key is used by the LaTeX templates to build and display the "cite as" paragraph on the first page of the pdf.
 
