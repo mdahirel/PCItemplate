@@ -5,7 +5,8 @@
 \usepackage[top=7cm,bottom=2.5cm,headheight=120pt,headsep=15pt,left=6cm,right=1.5cm,marginparwidth=4.2cm,marginparsep=0.5cm]{geometry}
 
 \usepackage{ifthen}
-
+\usepackage{longtable}
+\usepackage{booktabs}
 \usepackage{marginnote}
 \reversemarginpar  % sets margin notes to the left
 \usepackage{lipsum} % Required to insert dummy text
@@ -32,7 +33,11 @@ url=false
 ]{biblatex}
 
 
-
+\DeclareFieldFormat{doi}{%
+  %\mkbibacro{DOI}\addcolon\space
+  \ifhyperref
+    {\href{https://doi.org/#1}{\nolinkurl{https://doi.org/#1}}}
+    {\nolinkurl{https://doi.org/#1}}}
 
 
 \DeclareNameAlias{default}{family-given}
@@ -63,7 +68,7 @@ url=false
 }
 
 \newcommand{\writeauthor}{author={\citeauthors},}
-\newcommand{\writeDOI}{doi={https://doi.org/\preprintDOI},}
+\newcommand{\writeDOI}{doi={\preprintDOI},}
 
 \filecontentsspecials|[]
 \begin{filecontents*}[overwrite]{recommendedpreprint.bib}
@@ -102,6 +107,7 @@ url=false
 \usepackage{graphbox}  % loads graphicx ppackage with extended options for vertical alignment of figures
 \usepackage{floatrow}
 \floatsetup[figure]{capposition=\captionside}
+\floatsetup[table]{style=plaintop}
 % Line numbers
 %\usepackage[right]{lineno}
 % Improve typesetting in LaTex
@@ -139,7 +145,7 @@ url=false
 
 %\newcommand{\DOIlink}{\href{https://dx.doi.org/\DOI}{\DOI}}
 
-\newcommand{\DOIrecommendationlink}{\href{https://dx.doi.org/\DOIrecommendation}{\DOIrecommendation}}
+
 
 \lfoot{\scriptsize \textsc{\color{mediumgray}\PCI}}
 
@@ -266,7 +272,8 @@ url=false
 \fcolorbox{lightgray}{lightgray}{
 \parbox{\textwidth - 2\fboxsep}{
 \centering\large{\fontseries{sb}\selectfont{This article has been peer-reviewed and recommended by\\
-\emph{\PCI}}}\\
+\emph{\PCI}\\
+\recommendationDOI\\}}
 %\raggedright\large{\fontseries{sb}\selectfont{An article peer-reviewed and recommended by \emph{\PCI}, edited by \recommender \space on the basis of the reviews by \reviewers \space (DOI: \DOIrecommendationlink)}}\\
 %\small \fullcite{preprint}
 }}
