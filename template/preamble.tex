@@ -2,8 +2,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%main packages to use%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{xstring}
 \usepackage[top=7cm,bottom=2.5cm,headheight=120pt,headsep=15pt,left=6cm,right=1.5cm,marginparwidth=4.2cm,marginparsep=0.5cm]{geometry}
-
 \usepackage{ifthen}
 \usepackage{longtable}
 \usepackage{booktabs}
@@ -31,10 +32,11 @@ giveninits=true,
 terseinits=true,
 url=false
 ]{biblatex}
+%%%%%%%%%%%%%%%%%%%%%%end main package list %%%%%%%%%%%%%%%%%%%%%%%
 
 
+%%%%%%%%%%%%%%%%% adjustments to bibliography settings%%%%%%%%%%%%%
 \DeclareFieldFormat{doi}{%
-  %\mkbibacro{DOI}\addcolon\space
   \ifhyperref
     {\href{https://doi.org/#1}{\nolinkurl{https://doi.org/#1}}}
     {\nolinkurl{https://doi.org/#1}}}
@@ -49,14 +51,11 @@ url=false
 \DeclareFieldFormat[article, inbook, incollection, inproceedings, misc, thesis, unpublished]{title}{#1} % title without quotes
 \usepackage{csquotes}
 \RequirePackage[english]{babel} % must be called after biblatex
-%\addbibresource{sample.bib}
 
-%$for(bibliography)$
-%\addbibresource{$bibliography.file$}
-%$endfor$
-\addbibresource{\myrefs}
+\addbibresource{\myrefs}% add the main bibliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
+%%%%%build the "cite as" reference from info in the YAML header of the Rmd%%%%
 \def\filecontentsspecials#1#2#3{
   \global\let\ltxspecials\dospecials
   \gdef\dospecials{\ltxspecials
@@ -71,20 +70,18 @@ url=false
 \newcommand{\writeDOI}{doi={\preprintDOI},}
 
 \filecontentsspecials|[]
-\begin{filecontents*}[overwrite]{recommendedpreprint.bib}
+\begin{filecontents*}[overwrite]{bibliography/recommendedpreprint.bib}
 @article{recommendedpreprint,
   title={\preprinttitle},
   |writeauthor%
-  %FamilynameOne, FirstnameOne and FamilynameTwo, FirstnameTwo and FamilynameThree, FirstnameThree
   journal={\preprintserver},
   volume={\preprintnumber, ver. \preprintversion \space peer-reviewed and recommended by \emph{\PCI}},
   year={\pubyear},
-  |writeDOI% doi = {\preprintDOI},
-  %https://doi.org/xxxxxxxxxxx
+  |writeDOI
 }
 \end{filecontents*}
 
-\addbibresource{recommendedpreprint.bib}
+\addbibresource{bibliography/recommendedpreprint.bib}
 
 % the authors and doi fields need to be expanded and written explicitly to the bib fiel to work well
 % when added back to the references
@@ -100,14 +97,17 @@ url=false
 \usepackage{nameref}
 \usepackage[pdfborder={0 0 0}]{hyperref}  % sets link border to white
 \urlstyle{same}
+%%%%%%%%%%%%%%%%%%%%%%% end bibliography settings%%%%%%%
 
 
-
-% Include figures
+%%%%%% Figure and table management
 \usepackage{graphbox}  % loads graphicx ppackage with extended options for vertical alignment of figures
 \usepackage{floatrow}
 \floatsetup[figure]{capposition=\captionside}
 \floatsetup[table]{style=plaintop}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%% typesetting%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Line numbers
 %\usepackage[right]{lineno}
 % Improve typesetting in LaTex
@@ -128,8 +128,10 @@ url=false
 \usepackage{changepage}
 % Adjust caption style
 \usepackage[aboveskip=1pt,labelfont=bf,labelsep=period,singlelinecheck=off]{caption}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Headers and footers
+
+%%%%% Headers and footers%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{fancyhdr}  % custom headers/footers
 \usepackage{lastpage}  % number of page in the document
 \pagestyle{fancy}  % enables customization of headers/footers
@@ -138,22 +140,18 @@ url=false
 \renewcommand{\footrulewidth}{0.5pt}
 % full logo on first page, then small logo on subsequent pages
 
-\lhead{\ifnum\thepage=1 \includegraphics[width=13.5cm]{logo_pour_PDF_\whichPCI.png} \else \includegraphics[width=5cm]{small_logo_pour_PDF_\whichPCI.png} \fi}
+\lhead{\ifnum\thepage=1 \includegraphics[width=13.5cm]{resources/logo_pour_PDF_\whichPCI.png} \else \includegraphics[width=5cm]{resources/small_logo_pour_PDF_\whichPCI.png} \fi}
 
 \chead{}
 \rhead{}
-
-%\newcommand{\DOIlink}{\href{https://dx.doi.org/\DOI}{\DOI}}
-
 
 
 \lfoot{\scriptsize \textsc{\color{mediumgray}\PCI}}
 
 \cfoot{}
 \rfoot{\scriptsize\thepage\space of\space\pageref{LastPage}}
+%%%%%%%end header and footer settings%%%%%%%%%%%%%
 
-
-%\newcommand{\PCI}{Peer Community In Evolutionary Biology}
 
 \ifnum\pdfstrcmp{\whichPCI}{ecology}=0
   \newcommand{\PCI}{Peer Community In Ecology} \else %
@@ -175,8 +173,8 @@ url=false
   \newcommand{\PCI}{Peer Community In Forest \& Wood Science}
 \fi \fi \fi \fi \fi \fi \fi \fi \fi
 
-
-\newcommand{\beginingpreprint}{
+%%%%%%begin the preprint%%%%%%%%%%
+\newcommand{\beginningpreprint}{
 \vspace*{0.5cm}
 \begin{flushleft}
 \baselineskip=30pt
@@ -188,16 +186,16 @@ url=false
 \large\textnormal{\color{pciblue}\\RESEARCH ARTICLE}\\
 \vspace*{0.5pt}
 \\
-\includegraphics[align=c,width=0.5cm]{OAlogoblue.png} \space \large\textbf{\color{pciblue}Open Access}\\
+\includegraphics[align=c,width=0.5cm]{resources/OAlogoblue.png} \space \large\textbf{\color{pciblue}Open Access}\\
 \\
-\includegraphics[align=c,width=0.5cm]{o_peerreview.png} \space \large\textbf{\color{pciblue}Open Peer-Review}\\
+\includegraphics[align=c,width=0.5cm]{resources/o_peerreview.png} \space \large\textbf{\color{pciblue}Open Peer-Review}\\
 \\
 \ifnum\pdfstrcmp{\opendata}{true}=0
-  \includegraphics[align=c,width=0.5cm]{o_data3.png} \space \large\textbf{\color{pciblue}Open Data}\\
+  \includegraphics[align=c,width=0.5cm]{resources/o_data3.png} \space \large\textbf{\color{pciblue}Open Data}\\
 \\
 \fi
 \ifnum\pdfstrcmp{\opencode}{true}=0
-  \includegraphics[align=c,width=0.5cm]{o_script3.png} \space \large\textbf{\color{pciblue}Open Code}\\
+  \includegraphics[align=c,width=0.5cm]{resources/o_script3.png} \space \large\textbf{\color{pciblue}Open Code}\\
 \fi
 \\
 \\
@@ -210,8 +208,6 @@ url=false
 %%%%rather than asking the authors to add the reference of the preprint to their bibliography to enable the citeas
 %%%%we make use of the YAML fields of the Rmd file
 \fullcite{recommendedpreprint}\mybibexclude{recommendedpreprint}\\
-%\printbibliography[type= article, env = recommendedpreprint.bib]
-%@recommendedpreprint (\pubyear). \preprinttitle. \emph{\preprintserver} \space \preprintnumber, ver. \preprintversion \space peer-reviewed and recommended by \emph{\PCI}. DOI: \DOI \\
 
 \vspace*{0.5cm}
 \textbf{Posted:} \datepub\\

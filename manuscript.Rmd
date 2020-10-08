@@ -1,6 +1,6 @@
 ---
-title: "A very good preprint"
-which_PCI: genomics
+title: "An RMarkdown template for a preprint recommended by one of the Peer Communities In"
+which_PCI: ecology
 # which_PCI MUST BE one of:
 # ecology
 # evolbiol: Evolutionary Biology
@@ -32,7 +32,7 @@ address:
 authorship-notes:
   - code: a  #delete or keep empty if not needed
     note: These authors contributed equally to this work. #delete or keep empty if not needed
-email: mail.mail\@mail.com
+email: email\@example.com #the "\" before the "@" is needed to escape and compile properly!
 abstract: |
   Write your abstract here in a single paragraph, no line breaks. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract. This is the abstract.
 keywords:
@@ -46,41 +46,41 @@ recommender: Their name here
 
 reviewers: Their name here if known, and X anonymous reviewers
 
-date: date in ddth mm YYYY format
+date: 01^st^ October 2020
 pubyear: "`r format(Sys.time(), '%Y')`"
 preprintserver: bioRxiv
 preprintversion: X
 preprintnumber: xxxx
-preprintDOI: xxxxxxxxxxx #important: format XXXXX here, do NOT add the https://doi.org/ here
-recommendationDOI: yyyyyyy #important: format XXXXX here, do NOT add the https://doi.org/ here
+preprintDOI: xxxxxxxxxxx #important: "naked" doi, do NOT include the https://doi.org/ prefix here
+recommendationDOI: yyyyyyy #important: "naked" doi, do NOT include the https://doi.org/ prefix here
 
-
-bibliography: sample.bib #replace with path (relative or absolute) to your own
-#e.g. C:/Users/.../myreferences.bib
+bibliography: bibliography/sample.bib #replace with path (relative or absolute) to your own
 #inline R code that outputs an unquoted path can be used (see pubyear above for how to include r code in YAML header)
-biblio-style: authoryear
-caption-side: bottom #can be top or bottom
+caption-side: bottom #where are figure captions relative to figure? can be top or bottom
 ###############################################################
 #### DO NOT CHANGE these settings, results not guaranteed if altered
+biblio-style: authoryear
 output:  
-  pdf_document:
-#to test: can be bookdown::pdf_document2 instead
-#would enable cross-referencing figures and tables
-#but would mean asking having to install another package to use template
+  bookdown::pdf_document2:
+#can be pdf_document instead of bookdown::pdf_document2
+#but that would disable figure and table cross-referencing
+#see https://bookdown.org/yihui/rmarkdown-cookbook/cross-ref.html
     fig_caption: true
-    template: main.tex
+    template: template/main.tex
     citation_package: biblatex
 
 ---
 ```{r setup, include=FALSE}
+library(knitr)
 knitr::opts_chunk$set(echo = FALSE)
-#document-wide setting: unless explicitly indicated
-# do not print code alongside with code chunks in document
+options(knitr.table.format = "latex")
+#document-wide settings: 
+# load required packages
+# unless explicitly indicated, do not print code alongside with code chunks in document
 #### end of "DO NOT CHANGE" block
 ################################
 ```
-<!--to do: set it so figures and tables are blocked on the right side and if too large expand on the left side of the writing column-->
-<!--also set it that width is defined in % of the total page, not the writing column? % of writing column but can go >100% works too-->
+
 # Introduction {-}
 
 This is an example of text. Note the use of {-} in headers in the code to suppress automatic header numbering. Do not forget it when you add your own custom headers and subheaders!
@@ -107,39 +107,36 @@ y <- 11:20
 plot(x, y)
 ```
 
-This is your Results part. Results are sometimes displayed in tables. Tables can be included in several ways. Either directly in the text using (Pandoc) Markdown syntax, as in Table 1. We can also make tables in RMarkdown, using packages such as `kable` and extensions, as in Table 2.
-
-| First Header  | Second Header | Third Header         |
-| :------------ | :-----------: | -------------------: |
-| First row     | Data          | Very long data entry |
-| Second row    |               | *Cell*               |
-| Third row     | **cell**      | the last data        | 
-
-Table: This is a table
-
-
-In both cases, note in the code where the caption is, and that tables are automatically numbered in the order of their introduction (in the `kable` table, independently of the chunk label). In Table 1, see one example of how cells can be left empty. 
+This is your Results part. Results are sometimes displayed in tables. Tables can be included in several ways. **The preferred method for this template** is through the use of the `kable` package and its extensions, like `kableExtra` for restyling. Other methods, like inputting a Markdown table directly in the text, have been known to lead to pagination bugs in some cases, that have not been ironed out yet.
 
 ```{r table-kable}
-knitr::kable(head(mtcars[, 1:4]), caption= "This is also a table", format="latex")
-#the format="latex" is important if you want to cross-reference the table
-#using the \@ref(tab:...) syntax
-#can be omitted otherwise. Try things!
+knitr::kable(head(mtcars[, 1:4]), caption= "This is a table", 
+             booktabs = T)
+#the format="latex" argument is REQUIRED for proper rendering in final pdf
+# but it is set globally at the start of the document,
+# so no need to give it in each table
 ```
 
+Note in the code where the caption is, and that tables are automatically numbered in the order of their introduction (independently of the chunk label).
 
-One can also easily add figures, either directly generated with code in-file (like Fig. 1), or imported (like Figs.2-3). There are several ways to import figures in RMarkdown; the preferred way in this template is to use `include_figures()` within a chunk. This makes in particular figure scaling much easier, and allows you to import pdf files as figures.
+Tables and figures can be cross-referenced using the `\@ref(a:b)` syntax, where *a* is the object type ("tab" for tables, "fig" for figures, "eqn" for equations) and *b* the label of the corresponding chunk. For instance, see Table \@ref(tab:table-kable).
+
+```{r table-kable2}
+knitr::kable(head(mtcars[, 5:8]), caption= "This is also a table, but with vertical lines kept")
+```
+
+One can also easily add figures, either directly generated with code in-file (like Fig.\@ref(fig:fig1), or imported (like Figs.\@ref(fig:fig2)-\@ref(fig:fig3)). There are several ways to import figures in RMarkdown; the preferred way in this template is to use `include_figures()` within a chunk. This makes in particular figure scaling much easier, and allows you to import pdf files as figures.
 
 Figures will place themselves in order of their introduction in the code, but where there is room, so not necessarily where you placed them *relative to text*. Play with structure to obtain the effect you want.
 
 
 ```{r fig2, fig.cap="A great figure", out.width="5cm"}
-knitr::include_graphics("fig.pdf")
+include_graphics("resources/fig.pdf")
 ```
 
 
 ```{r fig3, out.width="10cm", fig.cap="The best figure"}
-knitr::include_graphics("fig.png")
+knitr::include_graphics("resources/fig.png")
 ```
 
 # Discussion {-}

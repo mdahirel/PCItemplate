@@ -1,0 +1,125 @@
+%%%%%%%%%%TO FORMAT A PREPRINT FOR A PCI%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\documentclass[a4paper]{article}
+
+%%%%%%%%% extract variables of interest from YAML header   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%grab title
+\newcommand{\preprinttitle}{$title$}
+%%%
+
+%%%% grab author info for the "cite as" block
+$if(author)$
+\newcommand{\citeauthors}{%
+$for(author)$$author.lastname$, $author.firstname$ $sep$and $endfor$%
+$if(lastauthor)$
+$for(lastauthor)$
+and $lastauthor.lastname$, $lastauthor.firstname$$sep$$endfor$%
+$endif$}
+$endif$
+%%%%
+
+%%%% grab author info for the title page
+$if(author)$
+\newcommand{\listauthors}{
+$for(author)$ $author.firstname$ $author.lastname$\textsuperscript{$author.affiliation$}$sep$, $endfor$
+$if(lastauthor)$
+$for(lastauthor)$and $lastauthor.firstname$ $lastauthor.lastname$\textsuperscript{$lastauthor.affiliation$} $sep$ $endfor$
+$endif$
+}
+$endif$
+%%%%
+
+%%%grab open badge info
+\newcommand{\opendata}{$open_data$}
+\newcommand{\opencode}{$open_code$}
+%%%
+
+%%% grab PCI code: to import the right image and display the right PCI name
+\newcommand{\whichPCI}{$which_PCI$}
+%%%
+
+%%%grab other bibliographic info for the "cite as" block
+\newcommand{\pubyear}{$pubyear$}
+\newcommand{\preprintDOI}{$preprintDOI$}
+\newcommand{\recommendationDOI}{\href{https://doi.org/$recommendationDOI$}{https://doi.org/$recommendationDOI$}}
+\newcommand{\preprintserver}{$preprintserver$}
+\newcommand{\preprintnumber}{$preprintnumber$}
+\newcommand{\preprintversion}{$preprintversion$}
+%%%
+
+%%% grab info on where you want legend relative to figure
+\newcommand{\captionside}{$caption-side$}
+%%%
+
+
+%%%% grab info on affiliations
+$if(address)$
+\newcommand{\listinstitutions}{
+$for(address)$ \textsuperscript{$address.code$}$address.address$ $sep$\\ $endfor$
+}
+$endif$
+%%%%
+
+%%%% grab info on other authorship details (equal authorship...)
+$if(authorship-notes)$
+\newcommand{\authorshipnotes}{
+
+$for(authorship-notes)$ \textsuperscript{$authorship-notes.code$}$authorship-notes.note$ $sep$\\ $endfor$
+}
+$else$\newcommand{\authorshipnotes}{}
+$endif$
+%%%%%
+
+
+%%% grab review process info, date of final upload, recommender and reviewer ID, recommendation DOI
+\newcommand{\datepub}{$date$}
+
+$if(recommender)$
+\newcommand{\recommender}{
+$recommender$
+}
+$endif$
+
+\newcommand{\reviewers}{$reviewers$}
+%%%%%
+
+%%%%% grab corresponding address
+\newcommand{\email}{$email$}
+%%%%%
+
+%%%%grab abstract and key words
+\newcommand{\preprintabstract}{$abstract$}
+
+$if(keywords)$
+\newcommand{\preprintkeywords}{
+$for(keywords)$ $keywords$ $sep$, $endfor$
+}
+$endif$
+%%%%%
+
+%%% grab bibliography
+\newcommand{\myrefs}{$bibliography$}
+
+%%%(below, legacy code block, may not be needed)%%%
+%%%%%%this block needs to be added for references to play well since pandoc 2.8 update
+%%%%%% see eg https://github.com/rstudio/rmarkdown/issues/1649
+%%%%%% or https://stackoverflow.com/questions/59193797/pandocs-environment-cslreferences-undefined-when-knitting-rmarkdown-to-pdf-in-r
+$if(csl-refs)$
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newenvironment{cslreferences}%
+  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+  {\par}
+$endif$
+%%%
+
+\input{template/preamble.tex}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%Start document%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\beginningpreprint  %%% add header and other info
+$body$              %%% add text proper
+\end{document}
