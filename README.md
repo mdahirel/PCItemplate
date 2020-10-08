@@ -5,7 +5,7 @@ written by Maxime Dahirel (GitHub: [@mdahirel](https://github.com/mdahirel)), fr
 # To use this template
 
 - open the `manuscript.Rmd` file
-- modify the YAML with your informations (including your bibliography file path)
+- modify the YAML header (all the lines until the second `---`) with your informations (including your bibliography file path)
 - write your preprint in the body of the document
 - press `Knit` or use `render()`
 - *Voila!*
