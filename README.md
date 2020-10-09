@@ -4,6 +4,7 @@ written by Maxime Dahirel (GitHub: [@mdahirel](https://github.com/mdahirel)), fr
 
 # To use this template
 
+- (on GitHub) click on the "Code" button at the top of this page, then "Download ZIP", and unzip the `.zip` folder where you want it
 - open the `manuscript.Rmd` file
 - modify the YAML header (all the lines until the second `---`) with your informations (including your bibliography file path)
 - write your preprint in the body of the document
@@ -12,7 +13,7 @@ written by Maxime Dahirel (GitHub: [@mdahirel](https://github.com/mdahirel)), fr
 
 This RMarkdown template is based on the LaTeX templates available here https://peercommunityin.org/templates/, with modifications to allow you to fill all metadata fields directly from the YAML header of the `Rmd` file. 
 
-This template relies on the `bookdown` package. It is possible to output without it, but some functions are lost. See the "DO NOT CHANGE these settings unless you know what you're doing" block of the YAML header.
+This template relies on the `bookdown` package (https://bookdown.org/), which must be installed. It is actually possible to output without it, but some functions are lost. See the "DO NOT CHANGE these settings unless you know what you're doing" block of the YAML header.
 
 If you need any help in how to write your RMarkdown document, the RMarkdown Cookbook by Yihui Xie, Christophe Dervieux, Emily Riederer (https://bookdown.org/yihui/rmarkdown-cookbook/) is a good start, but many resources are available online.
 
