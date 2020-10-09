@@ -86,17 +86,22 @@ options(knitr.table.format = "latex")
 
 # Introduction {-}
 
-This is an example of text. Note the use of {-} in headers in the code to suppress automatic header numbering. Do not forget it when you add your own custom headers and subheaders!
+ Note the use of {-} in headers in the code to suppress automatic header numbering. Do not forget it when you add your own custom headers and subheaders!
+ 
+This is an example of text. This is an example of citation [@levins1971regional]. If you want to format your citations with authors outside parentheses, you can too: "@levins1971regional once wrote something important".
 
-This realization is especially important because it can flip around our expectations about which species expand fast, and how to manage them. We tend to think of initial colonization and long-term abundance as two independent axes of variation among species or indeed as two ends of a spectrum, in the classic competition-colonization tradeoff [@levins1971regional]. When both play into invasion speed, good dispersers might not outrun good competitors. This is useful knowledge, whether we want to contain an invasion or secure a reintroduction.
 
-In their study "When higher carrying capacities lead to faster propagation", @preprint combine mathematical analysis, Individual-Based simulations and experiments to show that various mechanisms can cause pushed fronts, whose speed increases with the carrying capacity K of the species. Rather than focus on one particular angle, the authors endeavor to demonstrate that this qualitative effect appears again and again in a variety of settings.
+And now, some filler text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+In their study, @preprint combine mathematical analysis, Individual-Based simulations and experiments to study expansions. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat
 
 # Methods {-}
 
-This is filler text. It is perhaps surprising that this notable and general connection between K and invasion speed has managed to garner so little fame in ecology. A large fraction of the literature employs the venerable Fisher-KPP reaction-diffusion model, which combines local logistic growth with linear diffusion in space. This model has prompted both considerable mathematical developments [@crooks2004spatial] and many applications to modelling real invasions [@shigesada1997biological]. But it only allows pulled fronts, driven by the small populations at the edge of a species range, with a speed that depends only on their initial growth rate r.
+This is filler text. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat. [@shigesada1997biological].
 
 ## Statistical analyses {-}
+
+See how to create headers and various levels of subheaders with `#`.
 
 Markdown documents can use LaTeX syntax to display equations, either inline: $y_{i} = x$, or as their own equation block:
 
@@ -104,7 +109,7 @@ $$y_{i} = x$$
 
 # Results {-}
 
-```{r fig1, fig.cap="A good figure", out.width="10cm"}
+```{r fig1, fig.cap="A good figure, generated directly from code within the RMarkdown document", out.width="10cm"}
 x <- 1:10
 y <- 11:20
 plot(x, y)
@@ -134,19 +139,19 @@ Figures will place themselves in order of their introduction in the code, but wh
 
 
 ```{r fig2, fig.cap="A great figure", out.width="5cm"}
-include_graphics("resources/fig.pdf")
+include_graphics("resources/Fig2.png")
 ```
 
 
-```{r fig3, out.width="10cm", fig.cap="The best figure"}
-knitr::include_graphics("resources/fig.png")
+```{r fig3, out.width="10cm", fig.cap="A figure, but imported for a pdf source. Advantages: never pixelated, even when zooming in; also, text is selectable"}
+knitr::include_graphics("resources/Fig3.pdf")
 ```
 
 # Discussion {-}
 
-Some filler text again. It is perhaps surprising that this notable and general connection between K and invasion speed has managed to garner so little fame in ecology. A large fraction of the literature employs the venerable Fisher-KPP reaction-diffusion model, which combines local logistic growth with linear diffusion in space. This model has prompted both considerable mathematical developments [@crooks2004spatial] and many applications to modelling real invasions [@shigesada1997biological]. But it only allows pulled fronts, driven by the small populations at the edge of a species range, with a speed that depends only on their initial growth rate r.
+Some filler text again. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat. [@crooks2004spatial] 
 
-It is perhaps surprising that this notable and general connection between K and invasion speed has managed to garner so little fame in ecology. A large fraction of the literature employs the venerable Fisher-KPP reaction-diffusion model, which combines local logistic growth with linear diffusion in space. This model has prompted both considerable mathematical developments [@crooks2004spatial] and many applications to modelling real invasions [@shigesada1997biological]. But it only allows pulled fronts, driven by the small populations at the edge of a species range, with a speed that depends only on their initial growth rate r.
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?[@shigesada1997biological]. 
 
 # Data accessibility {-}
 
