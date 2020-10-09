@@ -29,4 +29,4 @@ PCIs all have the exact same template, with the exception of the name (obviously
 - add this name to the list at the top of the `manuscript.Rmd` file, so that authors can find it
 - add both the first page header image and the secondary header image to the `resources` folder, with filenames `logo_pour_PDF_PCIshortname.png` and `small_logo_pour_PDF_PCIshortname.png` respectively, where `PCIshortname` is of course, your PCI short code name
 - in the `templates\preamble.tex` file, starting line ≈ 164, there is a series of nested if statements on how to expand a short code into the PCI long name. Add yours to the list
-- you're ready to write fully formatted articles for the new PCI!
+- the template is ready for the new PCI!
