@@ -8,7 +8,7 @@ written by Maxime Dahirel (GitHub: [@mdahirel](https://github.com/mdahirel)), fr
 - open the `manuscript.Rmd` file
 - modify the YAML header (all the lines until the second `---`) with your informations (including your bibliography file path)
 - write your preprint in the body of the document
-- press `Knit` or use `render()`
+- press `Knit` (if you use RStudio) or use `render()`
 - *Voila!*
 
 This RMarkdown template is based on the LaTeX templates available here https://peercommunityin.org/templates/, with modifications to allow you to fill all metadata fields directly from the YAML header of the `Rmd` file. 
