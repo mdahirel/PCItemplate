@@ -17,11 +17,11 @@ This template relies on the `bookdown` package (https://bookdown.org/), which mu
 
 If you need any help in how to write your RMarkdown document, the RMarkdown Cookbook by Yihui Xie, Christophe Dervieux, Emily Riederer (https://bookdown.org/yihui/rmarkdown-cookbook/) is a good start, but many resources are available online.
 
-NB: please ensure there is *no* reference with the key 'recommendedpreprint' in your bibliography files. This is the key used by the LaTeX templates to build and display the "cite as" paragraph on the first page of the pdf.
+NB: please ensure there is *no* reference with the key 'recommendedpreprint' in your own bibliography files. This is the key used by the LaTeX templates to generate a "recommendedpreprint.bib" file and use it to display the "cite as" paragraph on the first page of the pdf.
 
 **Important note regarding references lists:** In some cases, some unwanted annotation fields can appear in the reference lists. While we work on ironing these out, the best solution may be to delete manually the unwanted fields from the .bib file. For Zotero users, use Better BibTeX and export bibliographies as Better BibLaTeX to reduce these problems (preferentially with automatic title capitalization turned off, see Advanced> Export in Better BibTex preference panel).
 
-# PS: how to add new PCIs to the template
+# for admins: how to add new PCIs to the template
 
 PCIs all have the exact same template, with the exception of the name (obviously) and the header images. This makes adding a new PCI to the template very straightforward:
 
