@@ -25,7 +25,7 @@ If you need any help in how to write your RMarkdown document, the RMarkdown Cook
 
 - please ensure there is *no* reference with the key 'recommendedpreprint' in your own bibliography files. This is the key used by the LaTeX templates to generate a "recommendedpreprint.bib" file and use it to display the "cite as" paragraph on the first page of the pdf.
 
-- In some cases, some unwanted annotation fields can appear in the reference lists. While we work on ironing these out, the best solution may be to delete manually the unwanted fields from the .bib file. For Zotero users, use Better BibTeX and export bibliographies as Better BibLaTeX to reduce these problems (preferentially with automatic title capitalization turned off, see Advanced> Export in Better BibTex preference panel).
+- In some cases, some unwanted annotation fields can appear in the reference lists. While we work on ironing these out, the best solution may be to delete manually the unwanted fields from the .bib file. For Zotero users, use Better BibTeX and export bibliographies as Better BibLaTeX to reduce these problems (preferentially with automatic title capitalization turned off, see Advanced> Export in Better BibTex preference panel). Using Better BibTeX, one can also automate the exclusion of the unwanted fields from the .bib exports, if the problems persist (Export in preference panel, which is different from Advanced> Export). We recommend putting *at least* "annotation,month" on the exclude list.
 
 # for admins: how to add new PCIs to the template
 
