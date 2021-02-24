@@ -13,7 +13,7 @@ written by Maxime Dahirel (GitHub: [@mdahirel](https://github.com/mdahirel)), fr
 
 This RMarkdown template is based on the LaTeX templates available here https://peercommunityin.org/templates/, with modifications to allow you to fill all metadata fields directly from the YAML header of the `Rmd` file. 
 
-This template relies on the `bookdown` package (https://bookdown.org/), which must be installed. It is actually possible to output without it, but some functions are lost. See the "DO NOT CHANGE these settings unless you know what you're doing" block of the YAML header.
+This template relies on the `bookdown` package (https://bookdown.org/), which must be installed. It is actually possible to output without it, but some functions are lost. See the "DO NOT CHANGE these settings unless you know what you're doing" block of the YAML header. Like the authors of `bookdown`, I recommend the use of `tinytex` as the underlying LaTeX distribution (see https://yihui.org/tinytex/ for details and instructions about installation).
 
 If you need any help in how to write your RMarkdown document, the RMarkdown Cookbook by Yihui Xie, Christophe Dervieux, Emily Riederer (https://bookdown.org/yihui/rmarkdown-cookbook/) is a good start, but many resources are available online.
 
