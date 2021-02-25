@@ -75,7 +75,7 @@ output:
 ---
 ```{r setup, include=FALSE}
 library(knitr)
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE, eval = TRUE)
 options(knitr.table.format = "latex")
 #document-wide settings: 
 # load required packages
@@ -146,6 +146,7 @@ include_graphics("resources/Fig2.png")
 ```{r fig3, out.width="10cm", fig.cap="A figure, but imported for a pdf source. Advantages: never pixelated, even when zooming in; also, text is selectable"}
 knitr::include_graphics("resources/Fig3.pdf")
 ```
+
 
 # Discussion {-}
 
