@@ -1,6 +1,8 @@
 # RMarkdown template for preprints recommended by one of the Peer Communities In
 
-written by Maxime Dahirel (GitHub: [@mdahirel](https://github.com/mdahirel)), from the original LaTeX templates
+written by Maxime Dahirel (GitHub: [@mdahirel](https://github.com/mdahirel)), from the original LaTeX templates.
+
+\[This template is a learning side-project by the author, delivered as is and sparsely maintained. I encourage users to open issues to signal bugs, but cannot guarantee I will be able to solve them. I also encourage users to propose solutions, and open PRs, about issues *they* may be able to solve.\]
 
 # To use this template
 
