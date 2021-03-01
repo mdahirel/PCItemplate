@@ -114,6 +114,7 @@ Lists can be numbered:
 
 2. a second thing
 
+
 # Methods {-}
 
 This is filler text. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat. [@shigesada1997biological].
@@ -166,6 +167,13 @@ include_graphics("resources/Fig2.png")
 knitr::include_graphics("resources/Fig3.pdf")
 ```
 
+If you want to display the actual code for a chunk (may be useful for some methods paper), you can:
+
+```{r test, echo = TRUE, eval = FALSE}
+a <- 2
+```
+
+(set the `echo` argument of the chunk to `TRUE` to override the default and make the code visible, set the `eval` argument to `FALSE` if this is code you want to show, not run. See general Rmarkdown help pages for more on chunk arguments)
 
 # Discussion {-}
 
