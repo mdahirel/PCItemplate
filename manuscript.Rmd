@@ -103,6 +103,11 @@ Lists can be included following standard Markdown syntax:
 
 - one last thing
 
+List elements don't need to be separated by empty lines:
+
+- a thing
+- another thing
+
 Lists can be numbered:
 
 1. a thing
