@@ -21,7 +21,7 @@ If you need any help in how to write your RMarkdown document, the RMarkdown Cook
 
 - This template relies on the `bookdown` package (https://bookdown.org/), which must be installed. It is actually possible to output without it, but some functions are lost. See the "DO NOT CHANGE these settings unless you know what you're doing" block of the YAML header. 
 
-- Like the authors of `bookdown`, I strongly recommend the use of `tinytex` as the underlying LaTeX distribution (see https://yihui.org/tinytex/ for details and instructions about installation). Anecdotally, users have reported that bugs during pdf knitting have actually been repaired by installing `tinytex`.
+- Like the authors of `bookdown`, I strongly recommend the use of `tinytex` as the underlying LaTeX distribution (see https://yihui.org/tinytex/ for details and instructions about installation). Anecdotally, users have reported that some bugs during pdf knitting have actually been repaired by installing `tinytex`.
 
 **Important notes regarding references lists:** 
 
