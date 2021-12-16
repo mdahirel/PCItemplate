@@ -2,7 +2,7 @@
 
 written by Maxime Dahirel (GitHub: [@mdahirel](https://github.com/mdahirel)), from the original LaTeX templates.
 
-\[This template is a learning side-project by the author, delivered as is and sparsely maintained. I encourage users to open issues to signal bugs, but cannot guarantee I will be able to solve them. I also encourage users to propose solutions, and open PRs, about issues *they* may be able to solve. I especially encourage anyone with more time than me to fork this repo and make their own, better version\]
+\[The creation of this template was a side-project/learning exercice for the author. **It is delivered as is, sparsely maintained, and may not receive further updates**. I encourage users to open issues to signal bugs, but cannot guarantee I will be able to solve them, or even see them. I also encourage users to propose solutions, and open PRs, about issues *they* may be able to solve. I especially encourage anyone with more time than me to fork this repo and make their own, better version\]
 
 # To use this template
 
